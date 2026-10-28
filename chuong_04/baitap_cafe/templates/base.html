@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tiêu đề có suffix '- Sông Hương' -->
+    <title>{% block title %}{% endblock %} - Sông Hương</title>
+
+    {% block styles %}
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        nav { background-color: #f4f4f4; padding: 12px; margin-bottom: 20px; border-radius: 5px; }
+        nav a { margin-right: 15px; text-decoration: none; color: #333; font-weight: bold; }
+        nav a:hover { color: brown; }
+        footer { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; font-size: 0.9em; color: #666; }
+        table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px 12px; }
+    </style>
+    {% endblock %}
+</head>
+<body>
+
+    <!-- Menu 3 liên kết -->
+    <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/menu">Thực đơn</a>
+        <a href="/contact">Liên hệ</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Chân trang dùng chung -->
+    <footer>
+        <p>&copy; Cà phê Sông Hương - 12 Lê Lợi, Huế - Điện thoại {{ shop.phone if shop else '0234 3888 999' }}</p>
+    </footer>
+
+</body>
+</html>
