@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Máy tính cơ bản{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-3">
+            <div class="card-header bg-primary text-white py-3">
+                <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2"></i>Bài 1: Máy tính cơ bản</h4>
+            </div>
+            <div class="card-body p-4">
+
+                <form method="post" action="/calculator" novalidate>
+                    <!-- Số a -->
+                    <div class="mb-3">
+                        <label for="a" class="form-label fw-bold">Số thứ nhất (a):</label>
+                        <input type="text" id="a" name="a" value="{{ values.a }}"
+                            class="form-control {% if errors.a %}is-invalid{% endif %}" placeholder="Ví dụ: 5 hoặc 2,5">
+                        {% if errors.a %}
+                        <div class="invalid-feedback">{{ errors.a }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Phép toán -->
+                    <div class="mb-3">
+                        <label for="op" class="form-label fw-bold">Phép toán (op):</label>
+                        <select id="op" name="op" class="form-select {% if errors.op %}is-invalid{% endif %}">
+                            <option value="+" {% if values.op=='+' %}selected{% endif %}>+ (Cộng)</option>
+                            <option value="-" {% if values.op=='-' %}selected{% endif %}>- (Trừ)</option>
+                            <option value="*" {% if values.op=='*' %}selected{% endif %}>* (Nhân)</option>
+                            <option value="/" {% if values.op=='/' %}selected{% endif %}>/ (Chia)</option>
+                        </select>
+                        {% if errors.op %}
+                        <div class="invalid-feedback">{{ errors.op }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Số b -->
+                    <div class="mb-3">
+                        <label for="b" class="form-label fw-bold">Số thứ hai (b):</label>
+                        <input type="text" id="b" name="b" value="{{ values.b }}"
+                            class="form-control {% if errors.b %}is-invalid{% endif %}"
+                            placeholder="Ví dụ: 3 hoặc 12.5">
+                        {% if errors.b %}
+                        <div class="invalid-feedback">{{ errors.b }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                        <i class="fa-solid fa-equals me-1"></i>Tính toán
+                    </button>
+                </form>
+
+                <!-- Hiển thị kết quả -->
+                {% if result %}
+                <div class="alert alert-success mt-4 mb-0 d-flex align-items-center shadow-sm" role="alert">
+                    <i class="fa-solid fa-circle-check fs-4 me-3"></i>
+                    <div>
+                        <div class="small text-uppercase fw-bold text-success">Kết quả phép tính</div>
+                        <div class="fs-4 fw-bold text-dark">{{ result }}</div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

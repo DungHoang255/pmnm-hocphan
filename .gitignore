@@ -1,0 +1,8 @@
+# Bỏ qua tất cả các thư mục môi trường ảo
+.venv/
+venv/
+env/
+
+# Bỏ qua thư mục cache của Python
+__pycache__/
+*.pyc

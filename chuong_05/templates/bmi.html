@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Tính chỉ số BMI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-3">
+            <div class="card-header bg-info text-white py-3">
+                <h4 class="mb-0 fw-bold"><i class="fa-solid fa-weight-scale me-2"></i>Bài 3: Tính chỉ số BMI</h4>
+            </div>
+            <div class="card-body p-4">
+
+                <form method="post" action="/bmi" novalidate>
+                    <!-- Chiều cao -->
+                    <div class="mb-3">
+                        <label for="height" class="form-label fw-bold">Chiều cao (cm):</label>
+                        <div class="input-group">
+                            <input type="text" id="height" name="height" value="{{ values.height }}"
+                                class="form-control {% if errors.height %}is-invalid{% endif %}"
+                                placeholder="Ví dụ: 170">
+                            <span class="input-group-text">cm</span>
+                            {% if errors.height %}
+                            <div class="invalid-feedback">{{ errors.height }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Cân nặng -->
+                    <div class="mb-3">
+                        <label for="weight" class="form-label fw-bold">Cân nặng (kg):</label>
+                        <div class="input-group">
+                            <input type="text" id="weight" name="weight" value="{{ values.weight }}"
+                                class="form-control {% if errors.weight %}is-invalid{% endif %}"
+                                placeholder="Ví dụ: 65 hoặc 65,5">
+                            <span class="input-group-text">kg</span>
+                            {% if errors.weight %}
+                            <div class="invalid-feedback">{{ errors.weight }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info text-white w-100 py-2 fw-bold">
+                        <i class="fa-solid fa-heart-pulse me-1"></i>Tính chỉ số BMI
+                    </button>
+                </form>
+
+                <!-- Kết quả hiển thị đổi màu linh hoạt theo phân loại -->
+                {% if result %}
+                <div class="alert alert-{{ result.color_class }} mt-4 mb-0 d-flex align-items-center shadow-sm"
+                    role="alert">
+                    <i class="fa-solid fa-notes-medical fs-2 me-3"></i>
+                    <div>
+                        <div class="small text-uppercase fw-bold text-secondary">Kết quả đánh giá BMI</div>
+                        <div class="fs-4 fw-bold">
+                            {{ result.bmi }} - {{ result.category }}
+                        </div>
+                        {% if result.ideal_weight %}
+                        <div class="mt-1 text-dark">
+                            <i class="fa-solid fa-circle-info me-1"></i>Cân nặng nên có: <strong>{{ result.ideal_weight
+                                }}</strong>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

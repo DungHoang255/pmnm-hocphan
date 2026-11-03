@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- me-auto: Đẩy toàn bộ menu về bên trái -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active fw-bold{% endif %}" href="/">
+                        <i class="fa-solid fa-house me-1"></i>Trang chủ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/calculator' %}active fw-bold{% endif %}"
+                        href="/calculator">
+                        <i class="fa-solid fa-calculator me-1"></i>Bài 1: Máy tính cơ bản
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/grade' %}active fw-bold{% endif %}" href="/grade">
+                        <i class="fa-solid fa-graduation-cap me-1"></i>Bài 2: Tính điểm học phần
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/bmi' %}active fw-bold{% endif %}" href="/bmi">
+                        <i class="fa-solid fa-weight-scale me-1"></i>Bài 3: Tính chỉ số BMI
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

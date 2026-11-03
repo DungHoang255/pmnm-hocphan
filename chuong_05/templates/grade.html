@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Tính điểm học phần{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow border-0 rounded-3">
+            <div class="card-header bg-success text-white py-3">
+                <h4 class="mb-0 fw-bold"><i class="fa-solid fa-graduation-cap me-2"></i>Bài 2: Tính điểm học phần</h4>
+            </div>
+            <div class="card-body p-4">
+
+                <form method="post" action="/grade" novalidate>
+                    <!-- Chuyên cần -->
+                    <div class="mb-3">
+                        <label for="cc" class="form-label fw-bold">Chuyên cần (10%):</label>
+                        <div class="input-group">
+                            <input type="text" id="cc" name="cc" value="{{ values.cc }}"
+                                class="form-control {% if errors.cc %}is-invalid{% endif %}"
+                                placeholder="Thang điểm 0 - 10">
+                            <span class="input-group-text">10%</span>
+                            {% if errors.cc %}
+                            <div class="invalid-feedback">{{ errors.cc }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Giữa kỳ -->
+                    <div class="mb-3">
+                        <label for="gk" class="form-label fw-bold">Giữa kỳ (30%):</label>
+                        <div class="input-group">
+                            <input type="text" id="gk" name="gk" value="{{ values.gk }}"
+                                class="form-control {% if errors.gk %}is-invalid{% endif %}"
+                                placeholder="Thang điểm 0 - 10">
+                            <span class="input-group-text">30%</span>
+                            {% if errors.gk %}
+                            <div class="invalid-feedback">{{ errors.gk }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Cuối kỳ -->
+                    <div class="mb-3">
+                        <label for="ck" class="form-label fw-bold">Cuối kỳ (60%):</label>
+                        <div class="input-group">
+                            <input type="text" id="ck" name="ck" value="{{ values.ck }}"
+                                class="form-control {% if errors.ck %}is-invalid{% endif %}"
+                                placeholder="Thang điểm 0 - 10">
+                            <span class="input-group-text">60%</span>
+                            {% if errors.ck %}
+                            <div class="invalid-feedback">{{ errors.ck }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 py-2 fw-bold">
+                        <i class="fa-solid fa-chart-line me-1"></i>Tính điểm học phần
+                    </button>
+                </form>
+
+                <!-- Hiển thị kết quả -->
+                {% if result %}
+                <div class="alert alert-info mt-4 mb-0 d-flex align-items-center shadow-sm" role="alert">
+                    <i class="fa-solid fa-award fs-3 me-3 text-info"></i>
+                    <div>
+                        <div class="small text-uppercase fw-bold text-secondary">Kết quả học phần</div>
+                        <div class="fs-4 fw-bold text-dark">{{ result }}</div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <div class="container-fluid py-2">
+        <h1 class="display-5 fw-bold text-primary">Máy tính đa năng</h1>
+        <p class="col-md-10 fs-5 text-secondary">
+            Hệ thống bài tập xử lý Form server-side bằng Python Flask, kết hợp giao diện Bootstrap 5 giúp bắt lỗi trực
+            quan và mượt mà.
+        </p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-primary text-white rounded-3 p-3 me-3">
+                        <i class="fa-solid fa-calculator fa-2x"></i>
+                    </div>
+                    <h5 class="card-title mb-0 fw-bold">Bài 1: Máy tính cơ bản</h5>
+                </div>
+                <p class="card-text text-muted">
+                    Xử lý các phép toán 2 số (+, -, *, /), hỗ trợ dấu phẩy thập phân, kiểm tra lỗi chia cho 0 và giữ
+                    nguyên giá trị Form.
+                </p>
+                <a href="/calculator" class="btn btn-outline-primary fw-bold">
+                    Thực hiện ngay <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success text-white rounded-3 p-3 me-3">
+                        <i class="fa-solid fa-graduation-cap fa-2x"></i>
+                    </div>
+                    <h5 class="card-title mb-0 fw-bold">Bài 2: Tính điểm học phần</h5>
+                </div>
+                <p class="card-text text-muted">
+                    Tính điểm trung bình theo trọng số (10%, 30%, 60%), quy đổi điểm chữ, xử lý điểm liệt và kiểm tra dữ
+                    liệu bằng hàm dùng chung.
+                </p>
+                <a href="/grade" class="btn btn-outline-success fw-bold">
+                    Thực hiện ngay <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
