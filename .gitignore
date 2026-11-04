@@ -6,3 +6,6 @@ env/
 # Bỏ qua thư mục cache của Python
 __pycache__/
 *.pyc
+
+# Bỏ qua các tệp tạo CSDL SQLite
+instance/
