@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard - Quản lý sách
+{% endblock %}
+
+{% block content %}
+
+<h1>Dashboard quản lý thư viện</h1>
+
+<p class="muted">
+    Tổng quan danh mục và tình hình sách hiện có.
+</p>
+
+<section class="stats">
+
+    <article class="stat">
+        <span>Danh mục</span>
+        <strong>{{ total_categories }}</strong>
+    </article>
+
+    <article class="stat">
+        <span>Đầu sách</span>
+        <strong>{{ total_books }}</strong>
+    </article>
+
+    <article class="stat">
+        <span>Tổng số cuốn tồn kho</span>
+        <strong>{{ total_quantity }}</strong>
+    </article>
+
+</section>
+
+<section class="panel">
+
+    <h2>Số đầu sách theo danh mục</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Danh mục</th>
+                <th>Số đầu sách</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for name, count in category_stats %}
+
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ count }}</td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="2" class="empty">
+                    Chưa có danh mục nào.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</section>
+
+<section class="panel">
+
+    <h2>5 sách mới thêm gần nhất</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Tác giả</th>
+                <th>Danh mục</th>
+                <th>Số lượng</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for book in recent_books %}
+
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category.name }}</td>
+                <td>{{ book.quantity }}</td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="4" class="empty">
+                    Chưa có sách nào.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}
